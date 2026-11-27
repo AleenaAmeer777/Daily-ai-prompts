@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,8 +75,19 @@ nav a {
 .card {
   background: white;
   border-radius: 16px;
-  padding: 25px;
+  overflow: hidden;
   box-shadow: 0 5px 20px #30234d12;
+}
+
+.preview {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: 25px;
 }
 
 .card h3 {
@@ -114,6 +124,20 @@ footer {
   color: white;
 }
 
+@media (max-width: 600px) {
+  .prompts {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .preview {
+    height: 300px;
+  }
+
+  .hero h2 {
+    font-size: 27px;
+  }
+}
 </style>
 </head>
 
@@ -139,33 +163,59 @@ footer {
 
 <section class="prompts" id="prompts">
 
+  <!-- PROMPT 01 -->
   <div class="card">
-    <h3>✨ Prompt 01 — Royal Portrait</h3>
-    <p id="prompt1">
-      Transform my photo into a luxurious royal portrait.
-      Keep my original facial identity, eyes, nose, lips,
-      skin tone and facial features exactly unchanged.
-      Add an elegant black outfit, soft cinematic lighting,
-      a beautiful dark background and professional DSLR
-      photography. Make the result realistic and detailed.
-    </p>
-    <button class="copy" onclick="copyPrompt('prompt1', this)">
-      Copy Prompt
-    </button>
+
+    <img
+      class="preview"
+      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800"
+      alt="Royal portrait preview"
+      loading="lazy"
+    >
+
+    <div class="card-content">
+      <h3>✨ Prompt 01 — Royal Portrait</h3>
+
+      <p id="prompt1">
+        Transform my photo into a luxurious royal portrait.
+        Keep my original facial identity, eyes, nose, lips,
+        skin tone and facial features exactly unchanged.
+        Add an elegant black outfit, soft cinematic lighting,
+        a beautiful dark background and professional DSLR
+        photography. Make the result realistic and detailed.
+      </p>
+
+      <button class="copy" onclick="copyPrompt('prompt1', this)">
+        Copy Prompt
+      </button>
+    </div>
   </div>
 
+  <!-- PROMPT 02 -->
   <div class="card">
-    <h3>🌸 Prompt 02 — Dreamy Garden</h3>
-    <p id="prompt2">
-      Restyle my uploaded photo into a dreamy flower garden
-      portrait. Preserve my exact original face and identity.
-      Add soft natural sunlight, beautiful flowers,
-      elegant clothing, flowing hair and a gentle cinematic
-      atmosphere. Create a realistic professional portrait.
-    </p>
-    <button class="copy" onclick="copyPrompt('prompt2', this)">
-      Copy Prompt
-    </button>
+
+    <img
+      class="preview"
+      src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800"
+      alt="Dreamy flower garden preview"
+      loading="lazy"
+    >
+
+    <div class="card-content">
+      <h3>🌸 Prompt 02 — Dreamy Garden</h3>
+
+      <p id="prompt2">
+        Restyle my uploaded photo into a dreamy flower garden
+        portrait. Preserve my exact original face and identity.
+        Add soft natural sunlight, beautiful flowers,
+        elegant clothing, flowing hair and a gentle cinematic
+        atmosphere. Create a realistic professional portrait.
+      </p>
+
+      <button class="copy" onclick="copyPrompt('prompt2', this)">
+        Copy Prompt
+      </button>
+    </div>
   </div>
 
 </section>
@@ -180,9 +230,11 @@ function copyPrompt(id, button) {
 
   navigator.clipboard.writeText(text).then(() => {
     button.innerText = "Copied! ✓";
+
     setTimeout(() => {
       button.innerText = "Copy Prompt";
     }, 2000);
+
   }).catch(() => {
     alert("Please copy the prompt manually.");
   });
