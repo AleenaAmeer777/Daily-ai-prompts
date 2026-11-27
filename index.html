@@ -1,1 +1,193 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI Prompts</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f6ff;
+  color: #28233b;
+}
+
+header {
+  background: #30234d;
+  color: white;
+  padding: 24px 7%;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+header p {
+  color: #ded5f5;
+}
+
+nav {
+  padding: 16px;
+  text-align: center;
+  background: white;
+}
+
+nav a {
+  color: #563b83;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: bold;
+}
+
+.hero {
+  text-align: center;
+  padding: 55px 20px 35px;
+}
+
+.hero h2 {
+  font-size: 32px;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  color: #716a7c;
+  line-height: 1.6;
+}
+
+.prompts {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 5px 20px #30234d12;
+}
+
+.card h3 {
+  margin-bottom: 15px;
+  color: #563b83;
+}
+
+.card p {
+  color: #655e70;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.copy {
+  background: #563b83;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.copy:hover {
+  background: #30234d;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  margin-top: 40px;
+  background: #30234d;
+  color: white;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Daily AI Prompts ✨</h1>
+  <p>Transform your photos with creativity</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#prompts">Today's Prompts</a>
+</nav>
+
+<section class="hero" id="home">
+  <h2>Discover Your New Look</h2>
+  <p>
+    Two fresh AI photo editing prompts every day.
+    Copy your favourite prompt and create something beautiful!
+  </p>
+</section>
+
+<section class="prompts" id="prompts">
+
+  <div class="card">
+    <h3>✨ Prompt 01 — Royal Portrait</h3>
+    <p id="prompt1">
+      Transform my photo into a luxurious royal portrait.
+      Keep my original facial identity, eyes, nose, lips,
+      skin tone and facial features exactly unchanged.
+      Add an elegant black outfit, soft cinematic lighting,
+      a beautiful dark background and professional DSLR
+      photography. Make the result realistic and detailed.
+    </p>
+    <button class="copy" onclick="copyPrompt('prompt1', this)">
+      Copy Prompt
+    </button>
+  </div>
+
+  <div class="card">
+    <h3>🌸 Prompt 02 — Dreamy Garden</h3>
+    <p id="prompt2">
+      Restyle my uploaded photo into a dreamy flower garden
+      portrait. Preserve my exact original face and identity.
+      Add soft natural sunlight, beautiful flowers,
+      elegant clothing, flowing hair and a gentle cinematic
+      atmosphere. Create a realistic professional portrait.
+    </p>
+    <button class="copy" onclick="copyPrompt('prompt2', this)">
+      Copy Prompt
+    </button>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 Daily AI Prompts | Creativity for Everyone</p>
+</footer>
+
+<script>
+function copyPrompt(id, button) {
+  const text = document.getElementById(id).innerText;
+
+  navigator.clipboard.writeText(text).then(() => {
+    button.innerText = "Copied! ✓";
+    setTimeout(() => {
+      button.innerText = "Copy Prompt";
+    }, 2000);
+  }).catch(() => {
+    alert("Please copy the prompt manually.");
+  });
+}
+</script>
+
+</body>
+</html>
